@@ -93,8 +93,8 @@ def lambda_handler(event, context):
     ```
     5. Create events - go to Events tab, and click "Create event".
 
-    <img src="./img/creating_an_event.jpg" alt="Creating an event" width="600" /><br/>
-    <img src="./img/created_an_event.jpg" alt="created an event" width="600" />
+    <img src="./img/creating_an_event.jpg" alt="Creating an event" width="900" /><br/>
+    <img src="./img/created_an_event.jpg" alt="created an event" width="900" />
 
 2. Create the EventBridge Rule which runs the lambda daily
 ![EventBridge rule runs daily](./img/eventbridge_rule_runs_daily.jpg)
