@@ -56,10 +56,10 @@ def lambda_handler(event, context):
     1. Open the AWS console, go to AWS Systems Managar.
     2. Click Change Calendar under the Change Management on the left navigator.
     3. Click "Create calendar", and fill out the fields following the screenshot as example
-    ![Creating a Calendar](./img/creating_calendar.jpg)
+    <img src="./img/creating_calendar.jpg" alt="Creating a Calendar" width="900" />
     > (Note: the change calender default should be OPEN, until the events be created, which events have CLOSED state in detail)
     4. Once the calendar has been created, open the calendar and select Details, check the **Calendar use** as below screenshot
-    ![Systems Manager Change Calendar Creation with Default Open](./img/holiday_calendar.jpg)
+    <img src="./img/holiday_calendar.jpg" alt="Systems Manager Change Calendar Creation with Default Open" width="900" />
 
     Explanation: 
     1. Service is SSM (Systems Managr)
@@ -97,7 +97,7 @@ def lambda_handler(event, context):
     <img src="./img/created_an_event.jpg" alt="created an event" width="900" />
 
 2. Create the EventBridge Rule which runs the lambda daily
-![EventBridge rule runs daily](./img/eventbridge_rule_runs_daily.jpg)
+<img src="./img/eventbridge_rule_runs_daily.jpg" alt="EventBridge rule runs daily" width="900" />
 
 
 
