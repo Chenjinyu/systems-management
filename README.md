@@ -92,6 +92,7 @@ def lambda_handler(event, context):
     }
     ```
     5. Create events - go to Events tab, and click "Create event".
+    
     ![Creating an event](./img/creating_an_event.jpg)
     ![Creating an event](./img/created_an_event.jpg)
 
