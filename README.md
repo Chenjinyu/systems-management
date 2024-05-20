@@ -1,3 +1,27 @@
+# What is the AWS Systems Manager
+AWS Systems Manager is a unified interface that allows you to manage your AWS resources. It simplifies resource and application management, shortens the time to detect and resolve operational problems, and helps you manage your AWS infrastructure at scale.
+
+**Key Features:**
+1. **Automation**: Automate common operational tasks.
+2. **Run Command**: Execute commands across multiple instances.
+3. **Patch Manager**: Automate the process of patching managed instances with security-related updates.
+4. **Parameter Store**: Store configuration data and secrets.
+5. **State Manager**: Ensure your resources are in the desired state.
+6. **Inventory**: Collect and query configuration data from your instances.
+7. **OpsCenter**: Manage and resolve operational issues.
+
+# What is the AWS Systems Manager Change Calendar
+The Change Calendar is a feature within AWS Systems Manager that allows you to set up time periods when changes to your AWS resources are allowed or not allowed. This helps prevent unintended disruptions during critical times, such as holidays or peak business hours.
+
+**Key Features:**
+
+1. **Define Change Windows**: Specify time periods when changes can or cannot be made.
+2. **Integration with AWS Services**: Integrate with other AWS services to enforce change controls.
+3. **Event Notifications**: Receive notifications when changes are attempted outside of allowed windows.
+4. **Centralized Change Management**: Manage change windows across your entire AWS environment.
+
+-------
+
 # Systems Manager Change Calendar replace the XXX Enterprise Calendar Solution.
 
 The demonstration of AWS System Manager with Change Calendar to manage the "holiday" event. if your batch application depends on the enterprise calendar, please keep reading the instratuion. 
@@ -130,7 +154,7 @@ Looks like below:
     (Note: the change calender default should be OPEN, until the events be created, which events have CLOSED state in detail)
     
     4. Once the calendar has been created, open the calendar and select Details, check the **Calendar use** as below screenshot
-    
+
     <img src="./img/holiday_calendar.jpg" alt="Systems Manager Change Calendar Creation with Default Open" width="900" />
 
     Explanation: 
