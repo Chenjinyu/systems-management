@@ -46,7 +46,8 @@ no matter which way you'd like to choose, let's steps on the Change Calendar Cre
 
 # Get Change Calendar State in Lambda Code 
 
-[![Get Change Calendar State in Lambda Code ](./img/template.png)](https://www.youtube.com/watch?v=6IDiPjdDZdg)
+## Watch the video of Get Change Calendar State in Lambda Code
+[![Get Change Calendar State in Lambda Code](./img/template.png)](https://www.youtube.com/watch?v=6IDiPjdDZdg)
 
 
 ## Let's Follow Below Steps to Archieve Solution.
