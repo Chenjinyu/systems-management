@@ -91,15 +91,68 @@ def lambda_handler(event, context):
         ]
     }
     ```
-    5. Create events - go to Events tab, and click "Create event".
+    5. Create events - Go to Events tab, and click "Create event".
 
     <img src="./img/creating_an_event.jpg" alt="Creating an event" width="900" /><br/>
     <img src="./img/created_an_event.jpg" alt="created an event" width="900" />
 
-2. Create the EventBridge Rule which runs the lambda daily
+2. Create a policy for lambda's Permission policy
+    1. Go to Identity and Access Management (IAM).
+    2. Select "Policies" under Access management on the left navigator. 
+    3. Click "Create policy"
+    4. Choose JSON in Policy editor and copy & paste below JSON 
+    ```json
+        {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "logs:CreateLogGroup",
+                "Resource": "arn:aws:logs:us-east-1:change_to_your_aws_account_id:*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                ],
+                "Resource": [
+                    "arn:aws:logs:us-east-1:change_to_your_aws_account_id:log-group:/aws/lambda/DailyLambdaFuncInovkedByChangeState:*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": "ssm:GetCalendarState",
+                "Resource": "arn:aws:ssm:us-east-1:change_to_your_aws_account_id:document/Holiday_Calendar"
+            }
+        ]
+    }
+    ```
+    5. Click Next. and fill out the fields following below sreenshot as example. and then Create the policy.
+    <img src="./img/create_policy_for_lambda.jpg" alt="Create Policy For Lambda" width="900" />
+
+3. Create a role for lambda function Before creating the lambda. 
+>(Note, you should use gearfile to create the role, This documentation just for instruction of integration with Change Calendar).
+    1. Go to Identity and Access Management (IAM).
+    2. Select "Roles" under Access management on the left navigator. 
+    3. Click "Create role".
+    4. Choose "AWS Service" and and select Lambda under the Use case for the trusted entity
+    
+    
+4. Create a Lambda function
+>(Note, you should use gearfile to create the Lambda, This documentation just for instruction of integration with Change Calendar).
+    1. Go to AWS Lambda, and click "Create function".
+    2. Choose "Author from scratch". detail following below screenshot.
+
+5. Create Schedule Role
+Create the EventBridge Rule which runs the lambda daily
+    1. Go to Amazon EventBridge and select "Rules" on the left navigator.
+    2. Click "Create rule", and check the detail in below screenshot
+    <img src="./img/step_1_define_rule_detail.jpg" alt="Step 1 Define rule detail" width="900" />
+
 <img src="./img/eventbridge_rule_runs_daily.jpg" alt="EventBridge rule runs daily" width="900" />
 
-
+### NOTE: PLs create lambda and lambda role, and the secheule role first.
 
 
 # Change Calender Triggers EventBridge to invoke downstream Lambda
