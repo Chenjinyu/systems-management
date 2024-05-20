@@ -46,6 +46,9 @@ no matter which way you'd like to choose, let's steps on the Change Calendar Cre
 
 # Get Change Calendar State in Lambda Code 
 
+[![Get Change Calendar State in Lambda Code ](./img/lambda_check_change_calendar_state.png)](https://www.youtube.com/watch?v=6IDiPjdDZdg)
+
+
 ## Let's Follow Below Steps to Archieve Solution.
 
 1. Create a Permission Policy(**example named as:LambdaForCreateLogGroupAndChangeCalendarStatePolicy**) for lambda.
