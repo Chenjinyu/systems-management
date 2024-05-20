@@ -128,7 +128,9 @@ Looks like below:
     <img src="./img/creating_calendar.jpg" alt="Creating a Calendar" width="900" />
     
     (Note: the change calender default should be OPEN, until the events be created, which events have CLOSED state in detail)
+    
     4. Once the calendar has been created, open the calendar and select Details, check the **Calendar use** as below screenshot
+    
     <img src="./img/holiday_calendar.jpg" alt="Systems Manager Change Calendar Creation with Default Open" width="900" />
 
     Explanation: 
