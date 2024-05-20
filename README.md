@@ -11,12 +11,9 @@ The XXX Team is able to privode you the holiday josn foramat to easiler for you 
 
 From this demo, I will proivde two options to you to choose:
 1. **Get Change Calendar State in Lambda Code**. you are your own EventBridge rule, like runs daily, your batch task need to check the enterprise calendar (code changes is required), if today is holiday, the batch job is suppsoed to stop running. 
+![Lambda Check Change Calendar States](./img/lambda_check_change_calendar_state.png)
 
-![Lambda Check Change Calendar States](./img/lambda_check_change_calendar_state.jpg)
 
-2. **Change Calender Triggers EventBridge to invoke downstream Lambda**, Leveraging the EventBridge rule to disable/enable your rules, there is no code changes.
-
-![Lambda Check Change Calendar States](./img/lambda_check_change_calendar_state.jpg)
 
 no matter which way you'd like to choose, let's steps on the Change Calendar Creation.
 
@@ -166,7 +163,13 @@ Looks like below:
     <img src="./img/created_an_event.jpg" alt="created an event" width="900" />
 
 
+# Change Calender Triggers EventBridge to invoke downstream Lambda
 
+## Overview
+1. Create a Systems Manager Change Calender: define your calendar events
+2. Create an EventBridge Rule: Triggered by the change Calendar Evetns,
+3. Create a Lambda function: Triggered by EventBridge only when the calendar is OPEN
+4. Configure IAM Roles: Ensure proper permissions for all services. 
 
 
 
