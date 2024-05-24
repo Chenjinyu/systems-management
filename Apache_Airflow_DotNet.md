@@ -185,3 +185,94 @@ run_dotnet_job
 ```
 
 Choose the method that best fits your environment and requirements. Each of these methods provides a way to integrate .NET jobs into your Airflow workflows effectively.
+
+
+-----
+## To handle the challenge of triggering batch jobs built on the .NET framework running on Windows EC2 instances
+
+**Proposed Solution**
+Use SSH to Trigger Jobs on Windows EC2 Instances: Utilize Airflow's SSHOperator to remotely execute commands on Windows EC2 instances.
+Batch Script for .NET Jobs: Create batch scripts on the Windows EC2 instances that handle the execution of .NET jobs.
+Handle Job Dependencies: Manage the interdependencies between jobs within the Airflow DAG.
+Step-by-Step Implementation
+1. Set Up SSH Access to Windows EC2 Instances
+Ensure that your Windows EC2 instances are configured to accept SSH connections. You can use OpenSSH on Windows for this purpose.
+
+2. Create Batch Scripts on Windows EC2 Instances
+Create batch scripts on your Windows EC2 instances that will execute the .NET jobs. For example, create a script named run_job1.bat:
+```sh
+@echo off
+cd C:\path\to\your\net\job
+dotnet yourjob.dll
+
+```
+Repeat this for each of your .NET jobs.
+
+3. Configure Airflow Connections
+In the Airflow UI, configure an SSH connection to your Windows EC2 instance:
+
+Go to Admin > Connections.
+Create a new connection with the following details:
+Conn Id: windows_ssh
+Conn Type: SSH
+Host: your-ec2-instance-public-ip
+Login: your-ssh-username
+Password: your-ssh-password or set up an SSH key
+4. Define the Airflow DAG
+Define the DAG in Airflow to trigger the batch scripts using SSHOperator. Ensure the tasks are set up to reflect the dependencies between jobs.
+
+Here’s an example DAG that triggers several jobs with dependencies:
+```python
+from airflow import DAG
+from airflow.providers.ssh.operators.ssh import SSHOperator
+from datetime import datetime
+
+default_args = {
+    'owner': 'airflow',
+    'start_date': datetime(2023, 1, 1),
+    'retries': 1,
+}
+
+dag = DAG(
+    'trigger_dotnet_jobs',
+    default_args=default_args,
+    schedule_interval='@daily',
+)
+
+# Define SSH operators for each job
+job1 = SSHOperator(
+    task_id='run_job1',
+    ssh_conn_id='windows_ssh',
+    command='C:\\path\\to\\scripts\\run_job1.bat',
+    dag=dag,
+)
+
+job2 = SSHOperator(
+    task_id='run_job2',
+    ssh_conn_id='windows_ssh',
+    command='C:\\path\\to\\scripts\\run_job2.bat',
+    dag=dag,
+)
+
+job3 = SSHOperator(
+    task_id='run_job3',
+    ssh_conn_id='windows_ssh',
+    command='C:\\path\\to\\scripts\\run_job3.bat',
+    dag=dag,
+)
+
+# Set up dependencies between jobs
+job1 >> job2
+job2 >> job3
+
+```
+
+**Explanation**
+
+SSHOperator: This operator is used to execute SSH commands on remote hosts. In this case, it will execute the batch scripts on the Windows EC2 instances.
+Batch Scripts: These scripts are pre-configured on the Windows EC2 instances to execute the corresponding .NET jobs.
+Dependencies: The DAG sets up the dependencies between the jobs, ensuring they run in the correct order.
+
+**Summary**
+
+This solution leverages the SSHOperator to remotely trigger .NET batch jobs on Windows EC2 instances, ensuring that you can maintain the current infrastructure and manage job dependencies effectively within Apache Airflow. This approach allows you to integrate your existing Windows-based .NET jobs into Airflow's workflow management without significant changes to your current setup.
