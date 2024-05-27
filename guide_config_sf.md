@@ -21,14 +21,14 @@ Schema: Enter your_default_schema (your default schema).
 
 Extra: Enter the following JSON, replacing the placeholders with your Snowflake details:
 
-json
-Copy code
+```json
 {
   "account": "your_snowflake_account",
   "warehouse": "your_snowflake_warehouse",
   "database": "your_snowflake_database",
   "role": "your_snowflake_role"
 }
+```
 Step 5: Save the Connection
 Click the Save button at the bottom of the form to save your connection settings.
 Screenshots for Each Step
