@@ -191,6 +191,7 @@ Choose the method that best fits your environment and requirements. Each of thes
 ## To handle the challenge of triggering batch jobs built on the .NET framework running on Windows EC2 instances
 
 **Proposed Solution**
+
 Use SSH to Trigger Jobs on Windows EC2 Instances: Utilize Airflow's SSHOperator to remotely execute commands on Windows EC2 instances.
 Batch Script for .NET Jobs: Create batch scripts on the Windows EC2 instances that handle the execution of .NET jobs.
 Handle Job Dependencies: Manage the interdependencies between jobs within the Airflow DAG.
